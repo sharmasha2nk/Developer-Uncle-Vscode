@@ -2,6 +2,7 @@
 	"name": "dev-uncle",
 	"displayName": "Developer Uncle",
 	"description": "Developer Uncle to help you in some non-trivial tasks",
+	"publisher": "developeruncle",
 	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.42.0"
