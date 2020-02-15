@@ -14,3 +14,15 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
 ## [0.2.0]
 
 - Minor fixes   
+
+## [0.3.0]
+
+- Minor fixes   
+
+## [0.4.0]
+
+- Minor fixes   
+
+## [0.5.0]
+
+- Minor fixes   
