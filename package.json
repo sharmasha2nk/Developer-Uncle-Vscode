@@ -7,9 +7,6 @@
 	"author": {
 		"name": "Shashank Sharma"
 	},
-	"repository": {
-		"url": "https://dev.azure.com/sharmasha2nk/Developer%20Uncle/_git/Developer%20Uncle"
-	},
 	"engines": {
 		"vscode": "^1.42.0"
 	},
