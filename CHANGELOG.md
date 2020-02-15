@@ -1,7 +1,16 @@
 # Change Log
 
-All notable changes to the "dev-uncle" extension will be documented in this file.
+All notable changes to the "Developer Uncle" extension will be documented in this file.
 
-## [Unreleased]
+## [0.1.0]
 
-- Initial release
+- Initial few commands exposed 
+    - JSON Unescape		
+    - JSON Escape		
+    - Format JSON		
+    - Current Time		
+    - Generate random UUID   
+
+## [0.2.0]
+
+- Minor fixes   

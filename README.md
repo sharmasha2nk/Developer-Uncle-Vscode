@@ -1,24 +1,28 @@
-# dev-uncle README
+# Developer Uncle
 
-Developer Uncle to help you in some non-trivial tasks.
+Developer Uncle to help you in some trivial tasks.
 
 ## Features
+Commands for following actions:
+ - JSON Unescape	
+ ![unescape](images/unescape.gif)	
 
+ - JSON Escape
+ ![escape](images/escape.gif)	
+ 	
+ - Format JSON	
+ ![formatjson](images/formatjson.gif)	
 
-## Requirements
+ - Current Time		
+ ![date](images/date.gif)
 
-
-## Extension Settings
-
+ - Generate random UUID
+ ![uuid](images/uuid.gif)
 
 ## Known Issues
 
 None!
 
-## Release Notes
+Developer Uncle is also available on Slack. https://slack.com/apps/A3KRJEAN7-developer-uncle
 
-### 1.0.0
-
-Initial release of ...
-
-
+Contact developers at developer-uncle@echobullet.com

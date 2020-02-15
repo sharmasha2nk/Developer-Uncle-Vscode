@@ -1,16 +1,17 @@
 {
 	"name": "dev-uncle",
 	"displayName": "Developer Uncle",
-	"description": "Developer Uncle to help you in some non-trivial tasks",
+	"description": "Developer Uncle to help you in some trivial tasks",
 	"publisher": "developeruncle",
 	"version": "0.2.0",
 	"engines": {
 		"vscode": "^1.42.0"
 	},
 	"categories": [
-		"Other"
+		"Other", "Snippets", "Formatters"
 	],
 	"activationEvents": [
+		"onCommand:extension.surprise",
 		"onCommand:extension.unescapeJson",
 		"onCommand:extension.escapeJson",
 		"onCommand:extension.time",
@@ -20,6 +21,11 @@
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
+			{
+				"command": "extension.surprise",
+				"title": "You are best!",
+				"category": "DevUncle"
+			},
 			{
 				"command": "extension.unescapeJson",
 				"title": "JSON Unescape",
@@ -45,7 +51,21 @@
 				"title": "Generate random UUID",
 				"category": "DevUncle"
 			}
-		]
+		],
+        "keybindings": [
+            {
+                "command": "extension.unescapeJson",
+                "key": "shift+ctrl+8",
+                "mac": "shift+cmd+8",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "extension.escapeJson",
+                "key": "ctrl+alt+8",
+                "mac": "ctrl+cmd+8",
+                "when": "editorTextFocus"
+            }
+        ]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
