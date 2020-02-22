@@ -103,7 +103,7 @@
 				},
 				"developerUncle.IFTTT.events": {
 					"type": "string",
-					"default": "vscode",
+					"default": "vscode,todo",
 					"pattern": "^[0-9a-zA-Z]+(,[0-9a-zA-Z]+)*$",
 					"maxLength": 300,
 					"description": "Define all the supported events as comma separated."
@@ -117,33 +117,33 @@
 				},
 				"developerUncle.IFTTT.parameters.eventsWhichRequiresValue1": {
 					"type": "string",
-					"default": "",
+					"default": "vscode",
 					"pattern": "^[0-9a-zA-Z]+(,[0-9a-zA-Z]+)*$",
 					"maxLength": 300,
 					"description": "List all the events which requires value1 param."
 				},
 				"developerUncle.IFTTT.parameters.eventsWhichRequiresValue2": {
 					"type": "string",
-					"default": "",
+					"default": "vscode",
 					"pattern": "^[0-9a-zA-Z]+(,[0-9a-zA-Z]+)*$",
 					"maxLength": 300,
 					"description": "List all the events which requires value2 param."
 				},
 				"developerUncle.IFTTT.parameters.eventsWhichRequiresValue3": {
 					"type": "string",
-					"default": "vscode",
+					"default": "vscode,todo",
 					"pattern": "^[0-9a-zA-Z]+(,[0-9a-zA-Z]+)*$",
 					"maxLength": 300,
 					"description": "List all the events which requires value3 param."
 				},
 				"developerUncle.IFTTT.parameters.value1": {
 					"type": "string",
-					"default": "",
+					"default": "Value1",
 					"description": "Default value for value1. If not defined and value1 is marked required for the event, value would be asked during event trigger."
 				},
 				"developerUncle.IFTTT.parameters.value2": {
 					"type": "string",
-					"default": "",
+					"default": "Value2",
 					"description": "Default value for value2. If not defined and value2 is marked required for the event, value would be asked during event trigger."
 				},
 				"developerUncle.IFTTT.parameters.value3": {
@@ -166,7 +166,7 @@
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^7.0.1",
 		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.42.0",
+		"@types/vscode": "^0.10.5",
 		"eslint": "^6.8.0",
 		"@typescript-eslint/parser": "^2.18.0",
 		"@typescript-eslint/eslint-plugin": "^2.18.0",
