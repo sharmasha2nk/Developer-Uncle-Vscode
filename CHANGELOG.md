@@ -26,3 +26,10 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
 ## [0.5.0]
 
 - Minor fixes   
+
+## [0.6.0]
+
+- Integration with IFTTT.
+- Few more commands exposed
+    - Trigger IFTTT webhook event
+    - Trigger IFTTT webhook events (Select 1) 

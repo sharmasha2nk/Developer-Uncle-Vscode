@@ -1,14 +1,14 @@
 {
 	"name": "dev-uncle",
 	"displayName": "Developer Uncle",
-	"description": "Developer Uncle to help you in some trivial tasks",
+	"description": "Developer Uncle to help you in some trivial tasks, like formatting, escaping/unescaping JSON, time, UUID generation and most important creating IFTTT event trigger.",
 	"publisher": "developeruncle",
-	"version": "0.5.0",
+	"version": "0.6.0",
 	"author": {
 		"name": "Shashank Sharma"
 	},
 	"engines": {
-		"vscode": "^1.42.0"
+		"vscode": "^0.10.5"
 	},
 	"icon": "developeruncleicon.png",
 	"categories": [
@@ -22,39 +22,51 @@
 		"onCommand:extension.escapeJson",
 		"onCommand:extension.time",
 		"onCommand:extension.uuid4",
-		"onCommand:extension.formatJson"
+		"onCommand:extension.formatJson",
+		"onCommand:extension.ifttt",
+		"onCommand:extension.iftttEvents"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [{
 				"command": "extension.surprise",
 				"title": "You are best!",
-				"category": "DevUncle"
+				"category": "Developer Uncle"
 			},
 			{
 				"command": "extension.unescapeJson",
 				"title": "JSON Unescape",
-				"category": "DevUncle"
+				"category": "Developer Uncle"
 			},
 			{
 				"command": "extension.escapeJson",
 				"title": "JSON Escape",
-				"category": "DevUncle"
+				"category": "Developer Uncle"
 			},
 			{
 				"command": "extension.formatJson",
 				"title": "Format JSON",
-				"category": "DevUncle"
+				"category": "Developer Uncle"
 			},
 			{
 				"command": "extension.time",
 				"title": "Current Time",
-				"category": "DevUncle"
+				"category": "Developer Uncle"
 			},
 			{
 				"command": "extension.uuid4",
 				"title": "Generate random UUID",
-				"category": "DevUncle"
+				"category": "Developer Uncle"
+			},
+			{
+				"command": "extension.ifttt",
+				"title": "IFTTT event",
+				"category": "Developer Uncle"
+			},
+			{
+				"command": "extension.iftttEvents",
+				"title": "IFTTT events",
+				"category": "Developer Uncle"
 			}
 		],
 		"keybindings": [{
@@ -68,8 +80,79 @@
 				"key": "ctrl+alt+8",
 				"mac": "ctrl+cmd+8",
 				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.ifttt",
+				"key": "ctrl+K T",
+				"mac": "cmd+K T"
+			},
+			{
+				"command": "extension.iftttEvents",
+				"key": "ctrl+K A",
+				"mac": "cmd+K A"
 			}
-		]
+		],
+		"configuration": {
+			"title": "Developer Uncle",
+			"properties": {
+				"developerUncle.IFTTT.credentials.key": {
+					"type": "string",
+					"default": "",
+					"maxLength": 100,
+					"markdownDescription": "Provide your IFTTT Webhook Key. You can find it at [IFTTT Webhooks Documentation](https://ifttt.com/maker_webhooks)."
+				},
+				"developerUncle.IFTTT.events": {
+					"type": "string",
+					"default": "vscode",
+					"pattern": "^[0-9a-zA-Z]+(,[0-9a-zA-Z]+)*$",
+					"maxLength": 300,
+					"description": "Define all the supported events as comma separated."
+				},
+				"developerUncle.IFTTT.defaultEvent": {
+					"type": "string",
+					"default": "vscode",
+					"pattern": "^[0-9a-zA-Z]+$",
+					"maxLength": 80,
+					"description": "Default event to trigger."
+				},
+				"developerUncle.IFTTT.parameters.eventsWhichRequiresValue1": {
+					"type": "string",
+					"default": "",
+					"pattern": "^[0-9a-zA-Z]+(,[0-9a-zA-Z]+)*$",
+					"maxLength": 300,
+					"description": "List all the events which requires value1 param."
+				},
+				"developerUncle.IFTTT.parameters.eventsWhichRequiresValue2": {
+					"type": "string",
+					"default": "",
+					"pattern": "^[0-9a-zA-Z]+(,[0-9a-zA-Z]+)*$",
+					"maxLength": 300,
+					"description": "List all the events which requires value2 param."
+				},
+				"developerUncle.IFTTT.parameters.eventsWhichRequiresValue3": {
+					"type": "string",
+					"default": "vscode",
+					"pattern": "^[0-9a-zA-Z]+(,[0-9a-zA-Z]+)*$",
+					"maxLength": 300,
+					"description": "List all the events which requires value3 param."
+				},
+				"developerUncle.IFTTT.parameters.value1": {
+					"type": "string",
+					"default": "",
+					"description": "Default value for value1. If not defined and value1 is marked required for the event, value would be asked during event trigger."
+				},
+				"developerUncle.IFTTT.parameters.value2": {
+					"type": "string",
+					"default": "",
+					"description": "Default value for value2. If not defined and value2 is marked required for the event, value would be asked during event trigger."
+				},
+				"developerUncle.IFTTT.parameters.value3": {
+					"type": "boolean",
+					"default": "true",
+					"description": "Pass selected text as value3. If disabled and value3 is marked required for the event, value would be asked during event trigger."
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -93,6 +176,7 @@
 		"vscode-test": "^1.3.0"
 	},
 	"dependencies": {
+		"request": "^2.88.2",
 		"uuid": "^3.4.0"
 	}
 }
