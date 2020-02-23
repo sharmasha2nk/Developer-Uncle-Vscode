@@ -12,7 +12,7 @@ export function queryExtension(context: vscode.ExtensionContext): (...args: any[
 }
 
 async function query(context: vscode.ExtensionContext) {
-    const input = await vscode.window.showInputBox({ "prompt": "What is your query mate?" });
+    const input = await vscode.window.showInputBox({ "prompt": "How can I help?" });
     if (input) {
         var options = {
             'method': 'POST',

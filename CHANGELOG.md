@@ -41,3 +41,7 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
 ## [0.8.0]
 
 - Developer Uncle Assistant fallback to Google
+
+## [0.8.1]
+
+- Minor message change

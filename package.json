@@ -3,7 +3,7 @@
 	"displayName": "Developer Uncle - Your VS Code Virtual Assistant",
 	"description": "Developer Uncle to help you in some trivial tasks, like formatting, escaping/unescaping JSON, time, UUID generation and most important creating IFTTT event trigger.",
 	"publisher": "developeruncle",
-	"version": "0.8.0",
+	"version": "0.8.1",
 	"author": {
 		"name": "Shashank Sharma"
 	},
