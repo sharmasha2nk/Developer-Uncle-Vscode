@@ -38,11 +38,12 @@ async function query(context: vscode.ExtensionContext) {
             if (text && text.startsWith("command://")) {
                 var command = text.substr(10);
                 vscode.commands.executeCommand(command);
-            } else if (text) {
+            } else if (text && text != "ERROR") {
                 vscode.window.showInformationMessage(text);
             } else {
-                vscode.window.showInformationMessage("Not able to understand your query. Please rephrase.");
-                vscode.commands.executeCommand("extension.query");
+                vscode.window.showInformationMessage("Or I can help you Google it? [Google it](https://www.google.com/search?q=" + encodeURI(input.replace(")", "")) + ")");
+                vscode.window.showInformationMessage("I am sorry I couldn't understand that. I'll mark this one for learning. Do you want to rephrase your question?");
+                trackEvent("query_not_answered");
             }
         });
     }
