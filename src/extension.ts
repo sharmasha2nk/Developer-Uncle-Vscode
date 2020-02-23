@@ -5,6 +5,7 @@ import { surpriseExtension } from './extensions/surpriseExtension';
 import { formatJsonExtension } from './extensions/formatJsonExtension';
 import { escapeJsonExtension } from './extensions/escapeJsonExtension';
 import { unescapeJsonExtension } from './extensions/unescapeJsonExtension';
+import { init, queryExtension } from './extensions/queryExtension';
 import { iftttExtension, iftttEventsExtension } from './extensions/iftttExtension';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -17,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 	let surprise = vscode.commands.registerCommand('extension.surprise', surpriseExtension());
 	let ifttt = vscode.commands.registerCommand('extension.ifttt', iftttExtension());
 	let iftttEvents = vscode.commands.registerCommand('extension.iftttEvents', iftttEventsExtension());
+	let query = vscode.commands.registerCommand('extension.query', queryExtension(context));
 
 	context.subscriptions.push(surprise);
 	context.subscriptions.push(unescapeJson);
@@ -26,6 +28,9 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(uuid4);
 	context.subscriptions.push(ifttt);
 	context.subscriptions.push(iftttEvents);
+	context.subscriptions.push(query);
+
+	init(context);
 }
 
 export function deactivate() { }

@@ -33,3 +33,7 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
 - Few more commands exposed
     - Trigger IFTTT webhook event
     - Trigger IFTTT webhook events (Select 1) 
+
+## [0.7.0]
+
+- Developer Uncle Assistant

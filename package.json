@@ -1,9 +1,9 @@
 {
 	"name": "dev-uncle",
-	"displayName": "Developer Uncle",
+	"displayName": "Developer Uncle - Your VSCode Assistant",
 	"description": "Developer Uncle to help you in some trivial tasks, like formatting, escaping/unescaping JSON, time, UUID generation and most important creating IFTTT event trigger.",
 	"publisher": "developeruncle",
-	"version": "0.6.0",
+	"version": "0.7.0",
 	"author": {
 		"name": "Shashank Sharma"
 	},
@@ -24,7 +24,8 @@
 		"onCommand:extension.uuid4",
 		"onCommand:extension.formatJson",
 		"onCommand:extension.ifttt",
-		"onCommand:extension.iftttEvents"
+		"onCommand:extension.iftttEvents",
+		"onCommand:extension.query"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -67,6 +68,11 @@
 				"command": "extension.iftttEvents",
 				"title": "IFTTT events",
 				"category": "Developer Uncle"
+			},
+			{
+				"command": "extension.query",
+				"title": "Please Help",
+				"category": "Developer Uncle"
 			}
 		],
 		"keybindings": [{
@@ -90,6 +96,11 @@
 				"command": "extension.iftttEvents",
 				"key": "ctrl+K A",
 				"mac": "cmd+K A"
+			},
+			{
+				"command": "extension.query",
+				"key": "alt+space",
+				"mac": "alt+space"
 			}
 		],
 		"configuration": {
@@ -166,7 +177,7 @@
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^7.0.1",
 		"@types/node": "^12.11.7",
-		"@types/vscode": "^0.10.5",
+		"@types/vscode": "^1.0.0",
 		"eslint": "^6.8.0",
 		"@typescript-eslint/parser": "^2.18.0",
 		"@typescript-eslint/eslint-plugin": "^2.18.0",
@@ -177,6 +188,7 @@
 	},
 	"dependencies": {
 		"request": "^2.88.2",
+		"request-cookies": "^1.1.0",
 		"uuid": "^3.4.0"
 	}
 }
