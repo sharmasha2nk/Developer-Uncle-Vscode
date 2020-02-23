@@ -8,7 +8,7 @@
 		"name": "Shashank Sharma"
 	},
 	"engines": {
-		"vscode": "^0.10.5"
+		"vscode": "^1.0.0"
 	},
 	"icon": "developeruncleicon.png",
 	"categories": [
