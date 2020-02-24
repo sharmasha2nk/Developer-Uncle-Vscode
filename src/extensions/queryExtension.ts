@@ -38,6 +38,9 @@ async function query(context: vscode.ExtensionContext) {
             if (text && text.startsWith("command://")) {
                 var command = text.substr(10);
                 vscode.commands.executeCommand(command);
+            } else if (text && text.startsWith("copy://")) {
+                var textToCopy = text.substr(10);
+                vscode.env.clipboard.writeText(textToCopy).then(() => vscode.window.showInformationMessage('Copied to your clipboard!'));
             } else if (text && text != "ERROR") {
                 vscode.window.showInformationMessage(text);
             } else {
@@ -50,34 +53,37 @@ async function query(context: vscode.ExtensionContext) {
 }
 
 export async function init(context: vscode.ExtensionContext) {
-    var options = {
-        'method': 'POST',
-        'url': 'https://router.triniti.ai/morfeus/v1/channels/2017w32821678795/init',
-        'headers': {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Host': 'router.triniti.ai',
-            'Origin': 'https://demo.triniti.ai'
-        },
-        body: JSON.stringify({ "sdkVersion": "2.5.3", "sdkType": "w", "messageId": String(uuidv4()), "messageType": "text", "messageContent": "hi", "langCode": "en" })
+    if (context.globalState.get("applicationId")) {
+        console.debug("applicationId exist");
+    } else {
+        var options = {
+            'method': 'POST',
+            'url': 'https://router.triniti.ai/morfeus/v1/channels/2017w32821678795/init',
+            'headers': {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Host': 'router.triniti.ai',
+                'Origin': 'https://demo.triniti.ai'
+            },
+            body: JSON.stringify({ "sdkVersion": "2.5.3", "sdkType": "w", "messageId": String(uuidv4()), "messageType": "text", "messageContent": "hi", "langCode": "en" })
 
-    };
-    rp(options, function (error: string | undefined, response: { body: any, headers: any }) {
-        if (error) {
-            vscode.window.showErrorMessage("Some error connecting with Developer Uncle.");
-            trackException("queryinit", error);
-        }
-        var rawcookies = response.headers['set-cookie'];
-        for (var i in rawcookies) {
-            var cookie = new Cookie(rawcookies[i]);
-            console.log(cookie.key, cookie.value, cookie.expires);
-            if (cookie.key === "applicationId") {
-                context.globalState.update("applicationId", cookie.value);
+        };
+        rp(options, function (error: string | undefined, response: { body: any, headers: any }) {
+            if (error) {
+                vscode.window.showErrorMessage("Some error connecting with Developer Uncle.");
+                trackException("queryinit", error);
             }
-            if (cookie.key === "sid") {
-                context.globalState.update("sid", cookie.value);
+            var rawcookies = response.headers['set-cookie'];
+            for (var i in rawcookies) {
+                var cookie = new Cookie(rawcookies[i]);
+                console.log(cookie.key, cookie.value, cookie.expires);
+                if (cookie.key === "applicationId") {
+                    context.globalState.update("applicationId", cookie.value);
+                }
+                if (cookie.key === "sid") {
+                    context.globalState.update("sid", cookie.value);
+                }
             }
-        }
-    });
-
+        });
+    }
 }

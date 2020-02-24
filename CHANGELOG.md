@@ -45,3 +45,8 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
 ## [0.8.1]
 
 - Minor message change
+
+## [0.8.2]
+
+- If no text editor open, UUID command will copy the UUID to clipboard
+- Minor fixes

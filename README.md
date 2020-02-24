@@ -4,7 +4,7 @@ Developer Uncle to help you in some trivial tasks, like formatting, escaping/un-
 
 ## Features
 Commands for following actions:
- - VS Code Assistant
+ - VS Code Assistant (Beta)
  - IFTTT events
  - JSON Unescape    
  - JSON Escape

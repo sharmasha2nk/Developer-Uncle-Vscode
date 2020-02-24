@@ -7,7 +7,7 @@ export function uuidExtension(): (...args: any[]) => any {
 		trackEvent("uuid");
 		var editor = vscode.window.activeTextEditor;
 		if (!editor) {
-			vscode.window.showWarningMessage('No text editor detected!');
+			vscode.env.clipboard.writeText(uuidv4()).then(() => vscode.window.showInformationMessage('Copied to your clipboard!'));
 			return; // No open text editor
 		}
 		if (editor.selection.isEmpty) {
@@ -18,7 +18,7 @@ export function uuidExtension(): (...args: any[]) => any {
 			return vscode.workspace.applyEdit(edit);
 		}
 		else {
-			vscode.window.showWarningMessage('Deselect text!');
+			vscode.env.clipboard.writeText(uuidv4()).then(() => vscode.window.showInformationMessage('Copied to your clipboard!'));
 		}
 	};
 }
