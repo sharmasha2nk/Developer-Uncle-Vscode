@@ -12,7 +12,7 @@ Commands for following actions:
  - Current Time     
  - Generate random UUID
 
-## VS Code Assistant [AlT+SPACE]
+## VS Code Assistant [ALT+SPACE]
 Developer Uncle is your VS Code Assistant. You can ask to execute the above commands through the text like, 'please generate UUID', 'help me format JSON' etc. Or any queries related to him, like 'who are you?', 'what can you do?' etc. He can also do small talk. Any queries not able to answer fallbacks to Google.
 
 ## IFTTT Commands Configuration
