@@ -1,0 +1,85 @@
+{
+	"Add sample sequence diagram": {
+		"prefix": "sequence_diagram",
+		"body": [
+			"sequenceDiagram",
+    		"\tparticipant John",
+			"\tparticipant Alice",
+			"\tAlice->>John: Hello John, how are you?",
+			"\tJohn-->>Alice: Great!",
+			"",
+			"%% For reference check, https://mermaid-js.github.io/mermaid/#/sequenceDiagram"
+		],
+		"description": "Sample sequence diagram"
+	},
+	"Add sample graph": {
+		"prefix": "graph",
+		"body": [
+			"graph TB",
+			"\tA --> C",
+			"\tA --> D",
+			"\tB --> C",
+			"\tB --> D",
+			"",
+			"%% For reference check, https://mermaid-js.github.io/mermaid/#/flowchart"
+		],
+		"description": "Sample graph"
+	},
+	"Add sample class diagram": {
+		"prefix": "class_diagram",
+		"body": ["classDiagram",
+			"class Square~Shape~{",
+				"\tint id",
+				"\tList~int~ position",
+				"\tsetPoints(List~int~ points)",
+				"\tgetPoints() List~int~",
+			"}",
+			"Square : -List~string~ messages",
+			"Square : +setMessages(List~string~ messages)",
+			"Square : +getMessages() List~string~",
+		"\tSquare --|> classB : Inheritance",
+		"\tclassC --* classD : Composition",
+		"\tclassE --o classF : Aggregation",
+		"\tclassG --> classH : Association",
+		"\tclassI -- classJ : Link(Solid)",
+		"\tclassK ..> classL : Dependency",
+		"\tclassM ..|> classN : Realization",
+		"\tclassO .. classP : Link(Dashed)",
+		"",
+		"%% For reference check, https://mermaid-js.github.io/mermaid/#/classDiagram"],
+		"description": "Sample class diagram"
+	},
+	"Add sample state diagram": {
+		"prefix": "state_diagram",
+		"body": ["stateDiagram",
+		"s1 --> s2: A transition",
+		"",
+		"%% For reference check, https://mermaid-js.github.io/mermaid/#/stateDiagram"],
+		"description": "Sample state diagram"
+	},
+	"Add sample gantt chart": {
+		"prefix": "gantt_chart",
+		"body": ["gantt",
+			"\ttitle A Gantt Diagram",
+			"\tdateFormat  YYYY-MM-DD",
+			"\tsection Section",
+			"\tA task\t\t   :a1, 2014-01-01, 30d",
+			"\tAnother task\t :after a1  , 20d",
+			"\tsection Another",
+			"\tTask in sec\t  :2014-01-12  , 12d",
+			"\tanother task\t  : 24d",
+		"",
+		"%% For reference check, https://mermaid-js.github.io/mermaid/#/gantt"],
+		"description": "Sample gantt chart"
+	},
+	"Add sample pie chart": {
+		"prefix": "pie_chart",
+		"body": ["pie title Pets adopted by volunteers",
+		"\"Dogs\" : 386",
+		"\"Cats\" : 85",
+		"\"Rats\" : 15 ",
+		"",
+		"%% For reference check, https://mermaid-js.github.io/mermaid/#/pie"],
+		"description": "Sample pie chart"
+	}
+}

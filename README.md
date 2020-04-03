@@ -12,6 +12,9 @@ Commands for following actions:
  - Current Time     
  - Generate random UUID
 
+## Code Snippets
+ - Mermaid
+
 ## VS Code Assistant [ALT+SPACE]
 Developer Uncle is your VS Code Assistant. You can ask to execute the above commands through the text like, 'please generate UUID', 'help me format JSON' etc. Or any queries related to him, like 'who are you?', 'what can you do?' etc. He can also do small talk. Any queries not able to answer fallbacks to Google.
 
@@ -31,4 +34,8 @@ None!
 
 Developer Uncle is also available on Slack. https://slack.com/apps/A3KRJEAN7-developer-uncle
 
-Contact developers at developer-uncle@echobullet.com for any issues.
+Contact developers at developer-uncle@echobullet.com for any issues. Or ask questions [here](https://marketplace.visualstudio.com/items?itemName=developeruncle.dev-uncle&ssr=false#qna).
+
+## Support
+
+Please provide rating and review [here](https://marketplace.visualstudio.com/items?itemName=developeruncle.dev-uncle&ssr=false#review-details).

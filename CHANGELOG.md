@@ -5,10 +5,10 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
 ## [0.1.0]
 
 - Initial few commands exposed 
-    - JSON Unescape		
-    - JSON Escape		
-    - Format JSON		
-    - Current Time		
+    - JSON Unescape        
+    - JSON Escape        
+    - Format JSON        
+    - Current Time        
     - Generate random UUID   
 
 ## [0.2.0]
@@ -50,3 +50,7 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
 
 - If no text editor open, UUID command will copy the UUID to clipboard
 - Minor fixes
+
+## [0.8.3]
+
+- Code snippets for mermaid
