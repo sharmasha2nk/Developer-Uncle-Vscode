@@ -44,8 +44,8 @@ async function query(context: vscode.ExtensionContext) {
             } else if (text && text != "ERROR") {
                 vscode.window.showInformationMessage(text);
             } else {
-                vscode.window.showInformationMessage("Or I can help you Google it? [Google it](https://www.google.com/search?q=" + encodeURI(input.replace(")", "")) + ")");
-                vscode.window.showInformationMessage("I am sorry I couldn't understand that. I'll mark this one for learning. Do you want to rephrase your question?");
+                vscode.window.showInformationMessage("I can help you Google it? [Google it](https://www.google.com/search?q=" + encodeURI(input.replace(")", "")) + ")");
+                vscode.window.showInformationMessage("Currently I am not sure how to help you with that. Could you rephrase your query?");
                 trackEvent("query_not_answered");
             }
         });

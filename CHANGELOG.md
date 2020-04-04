@@ -11,19 +11,7 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
     - Current Time        
     - Generate random UUID   
 
-## [0.2.0]
-
-- Minor fixes   
-
-## [0.3.0]
-
-- Minor fixes   
-
-## [0.4.0]
-
-- Minor fixes   
-
-## [0.5.0]
+## [0.2.0 - 0.5.0]
 
 - Minor fixes   
 
@@ -54,3 +42,7 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
 ## [0.8.3]
 
 - Code snippets for mermaid
+
+## [0.8.4]
+
+- Minor message change
