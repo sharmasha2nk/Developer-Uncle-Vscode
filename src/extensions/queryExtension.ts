@@ -6,7 +6,7 @@ const uuidv4 = require('uuid/v4');
 
 export function queryExtension(context: vscode.ExtensionContext): (...args: any[]) => any {
     return () => {
-        trackEvent("query")
+        trackEvent("query");
         query(context);
     };
 }
@@ -35,13 +35,29 @@ async function query(context: vscode.ExtensionContext) {
                 trackException("query", error);
             }
             var text = JSON.parse(response.body).messages[0]?.message?.text;
-            if (text && text.startsWith("command://")) {
+            if (text && isJson(text)) {
+                const faqResponse = JSON.parse(text);
+                vscode.commands.executeCommand(faqResponse.command).then(undefined, err => {
+                    if (faqResponse.message) {
+                        vscode.window.showInformationMessage(faqResponse.message);
+                    }
+                    vscode.window.showInformationMessage("I suggest using " + faqResponse.extensionName + " extension.", "Download", "Extension Details").then(selection => {
+                        console.log(selection);
+                        if (selection === "Download") {
+                            vscode.env.openExternal(vscode.Uri.parse("vscode:extension/" + faqResponse.uniqueIdentifier));
+                        } else {
+                            vscode.env.openExternal(vscode.Uri.parse("https://marketplace.visualstudio.com/items?itemName=" + faqResponse.uniqueIdentifier));
+                        }
+                    });
+                    vscode.window.showInformationMessage("I see you don't have an extension to handle it.");
+                });
+            } else if (text && text.startsWith("command://")) {
                 var command = text.substr(10);
                 vscode.commands.executeCommand(command);
             } else if (text && text.startsWith("copy://")) {
-                var textToCopy = text.substr(10);
+                var textToCopy = text.substr(7);
                 vscode.env.clipboard.writeText(textToCopy).then(() => vscode.window.showInformationMessage('Copied to your clipboard!'));
-            } else if (text && text != "ERROR") {
+            } else if (text && text !== "ERROR") {
                 vscode.window.showInformationMessage(text);
             } else {
                 vscode.window.showInformationMessage("I can help you Google it? [Google it](https://www.google.com/search?q=" + encodeURI(input.replace(")", "")) + ")");
@@ -50,6 +66,15 @@ async function query(context: vscode.ExtensionContext) {
             }
         });
     }
+}
+
+function isJson(str: string) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
 }
 
 export async function init(context: vscode.ExtensionContext) {
