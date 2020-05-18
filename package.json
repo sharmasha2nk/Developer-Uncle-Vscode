@@ -3,7 +3,7 @@
 	"displayName": "Developer Uncle - Your VS Code Virtual Assistant",
 	"description": "Developer Uncle to help you in some trivial tasks, like formatting, escaping/unescaping JSON, time, UUID generation, mermaid code snippets and trigger IFTTT events.",
 	"publisher": "developeruncle",
-	"version": "0.8.5",
+	"version": "0.8.6",
 	"author": {
 		"name": "Shashank Sharma"
 	},
@@ -25,11 +25,13 @@
 		"onCommand:extension.formatJson",
 		"onCommand:extension.ifttt",
 		"onCommand:extension.iftttEvents",
-		"onCommand:extension.query"
+		"onCommand:extension.query",
+		"onCommand:extension.unescapeNFormatJson"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "extension.surprise",
 				"title": "You are best!",
 				"category": "Developer Uncle"
@@ -73,9 +75,15 @@
 				"command": "extension.query",
 				"title": "Please Help (beta)",
 				"category": "Developer Uncle"
+			},
+			{
+				"command": "extension.unescapeNFormatJson",
+				"title": "JSON Unescape & Formats",
+				"category": "Developer Uncle"
 			}
 		],
-		"keybindings": [{
+		"keybindings": [
+			{
 				"command": "extension.unescapeJson",
 				"key": "shift+ctrl+8",
 				"mac": "shift+cmd+8",
@@ -184,15 +192,16 @@
 		"@types/mocha": "^7.0.1",
 		"@types/node": "^12.11.7",
 		"@types/vscode": "^1.0.0",
-		"eslint": "^6.8.0",
-		"@typescript-eslint/parser": "^2.18.0",
 		"@typescript-eslint/eslint-plugin": "^2.18.0",
+		"@typescript-eslint/parser": "^2.18.0",
+		"eslint": "^6.8.0",
 		"glob": "^7.1.6",
-		"mocha": "^7.0.1",
+		"mocha": "^7.1.2",
 		"typescript": "^3.7.5",
 		"vscode-test": "^1.3.0"
 	},
 	"dependencies": {
+		"before-after-hook": "^2.1.0",
 		"request": "^2.88.2",
 		"request-cookies": "^1.1.0",
 		"uuid": "^3.4.0"

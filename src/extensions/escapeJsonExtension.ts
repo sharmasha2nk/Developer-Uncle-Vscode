@@ -13,14 +13,14 @@ export function escapeJsonExtension(): (...args: any[]) => any {
 			var selection = editor.selection;
 			var text = editor.document.getText(selection);
 			var fullRange;
-			if (text == "") {
+			if (text === "") {
 				text = editor.document.getText();
 				fullRange = new vscode.Range(editor.document.positionAt(0), editor.document.positionAt(text.length - 1));
 			}
 			else {
 				fullRange = selection;
 			}
-			if (text == "") {
+			if (text === "") {
 				vscode.window.showWarningMessage('No text detected!');
 				return;
 			}

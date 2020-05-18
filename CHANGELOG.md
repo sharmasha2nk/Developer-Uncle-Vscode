@@ -2,6 +2,11 @@
 
 All notable changes to the "Developer Uncle" extension will be documented in this file.
 
+## [0.8.6]
+
+- Unescape and format JSON with single command
+- Minor fixes
+
 ## [0.8.5]
 
 - Assistant to support any command

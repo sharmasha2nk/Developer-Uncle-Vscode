@@ -1,10 +1,10 @@
 import * as vscode from 'vscode';
 import { trackEvent, trackException } from '../utility/trackEvent';
 
-export function unescapeJsonExtension(): (...args: any[]) => any {
+export function unescapeNFormatJsonExtension(): (...args: any[]) => any {
 	return () => {
 		try {
-			trackEvent("unescapeJson");
+			trackEvent("unescapeNFormatJson");
 			var editor = vscode.window.activeTextEditor;
 			if (!editor) {
 				vscode.window.showWarningMessage('No text editor detected!');
@@ -25,12 +25,12 @@ export function unescapeJsonExtension(): (...args: any[]) => any {
 				return;
 			}
 			const edit = new vscode.WorkspaceEdit();
-			edit.replace(editor.document.uri, fullRange, JSON.parse(text));
+			edit.replace(editor.document.uri, fullRange, JSON.stringify(JSON.parse(JSON.parse(text)), null, 2));
 			return vscode.workspace.applyEdit(edit);
 		}
 		catch (error) {
 			vscode.window.showWarningMessage('Error un-escaping!');
-			trackException("unescapeJson", error);
+			trackException("unescapeNFormatJson", error);
 		}
 	};
 }

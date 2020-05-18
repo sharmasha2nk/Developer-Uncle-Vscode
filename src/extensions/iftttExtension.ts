@@ -27,7 +27,7 @@ function triggerEvent(event: string | undefined) {
 				return;
 			}
 			const quickPick = vscode.window.createQuickPick();
-			quickPick.placeholder = "Select any one event to trigger."
+			quickPick.placeholder = "Select any one event to trigger.";
 			quickPick.items = String(events)?.split(",").map(label => ({ label }));
 			quickPick.onDidChangeSelection(selections => {
 				quickPick.dispose();

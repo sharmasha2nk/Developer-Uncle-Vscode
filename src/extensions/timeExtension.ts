@@ -3,7 +3,7 @@ import { trackEvent } from '../utility/trackEvent';
 
 export function timeExtension(): (...args: any[]) => any {
 	return () => {
-		trackEvent("time")
+		trackEvent("time");
 		var editor = vscode.window.activeTextEditor;
 		if (!editor) {
 			vscode.window.showWarningMessage('No text editor detected!');
@@ -24,7 +24,7 @@ export function timeExtension(): (...args: any[]) => any {
 			quickPick.items = Object.keys(options).map(label => ({ label }));
 			quickPick.onDidChangeSelection(selections => {
 				quickPick.dispose();
-				if (selections[0].label == "UTC") {
+				if (selections[0].label === "UTC") {
 					edit.insert(uri, selection.active, new Date().toISOString().
 						replace(/T/, ' ').
 						replace(/\..+/, ''));

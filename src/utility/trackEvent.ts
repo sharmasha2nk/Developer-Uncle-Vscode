@@ -17,8 +17,7 @@ export async function trackEvent(label: string) {
     }, function (err: any, response: {
         statusCode: number;
     }) {
-        if (err)
-            console.log(err);
+        if (err) { console.log(err); }
     });
 }
 
@@ -37,7 +36,6 @@ export async function trackException(label: string, exd: string) {
     }, function (err: any, response: {
         statusCode: number;
     }) {
-        if (err)
-            console.log(err);
+        if (err) { console.log(err); }
     });
 }

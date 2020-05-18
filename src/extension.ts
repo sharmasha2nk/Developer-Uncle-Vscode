@@ -5,6 +5,7 @@ import { surpriseExtension } from './extensions/surpriseExtension';
 import { formatJsonExtension } from './extensions/formatJsonExtension';
 import { escapeJsonExtension } from './extensions/escapeJsonExtension';
 import { unescapeJsonExtension } from './extensions/unescapeJsonExtension';
+import { unescapeNFormatJsonExtension } from './extensions/unescapeNFormatJsonExtension';
 import { init, queryExtension } from './extensions/queryExtension';
 import { iftttExtension, iftttEventsExtension } from './extensions/iftttExtension';
 
@@ -19,6 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
 	let ifttt = vscode.commands.registerCommand('extension.ifttt', iftttExtension());
 	let iftttEvents = vscode.commands.registerCommand('extension.iftttEvents', iftttEventsExtension());
 	let query = vscode.commands.registerCommand('extension.query', queryExtension(context));
+	let unescapeNFormatJson = vscode.commands.registerCommand('extension.unescapeNFormatJson', unescapeNFormatJsonExtension());
 
 	context.subscriptions.push(surprise);
 	context.subscriptions.push(unescapeJson);
@@ -29,6 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(ifttt);
 	context.subscriptions.push(iftttEvents);
 	context.subscriptions.push(query);
+	context.subscriptions.push(unescapeNFormatJson);
 
 	init(context);
 }
