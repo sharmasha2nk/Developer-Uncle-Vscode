@@ -6,11 +6,14 @@ Developer Uncle to help you in some trivial tasks, like formatting, escaping/un-
 Commands for following actions:
  - VS Code Assistant (Beta)
  - IFTTT events
- - JSON Unescape    
- - JSON Escape
- - Format JSON  
+ - JSON Unescape* 
+ - JSON Unescape & Format*   
+ - JSON Escape*
+ - Format JSON*  
  - Current Time     
  - Generate random UUID
+
+ *Works on selected text also
 
 ## Code Snippets
  - Mermaid

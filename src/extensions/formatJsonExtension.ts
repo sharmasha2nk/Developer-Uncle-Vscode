@@ -15,7 +15,7 @@ export function formatJsonExtension(): (...args: any[]) => any {
 			var fullRange;
 			if (text === "") {
 				text = editor.document.getText();
-				fullRange = new vscode.Range(editor.document.positionAt(0), editor.document.positionAt(text.length - 1));
+				fullRange = new vscode.Range(editor.document.positionAt(0), editor.document.positionAt(text.length));
 			}
 			else {
 				fullRange = selection;
@@ -25,7 +25,8 @@ export function formatJsonExtension(): (...args: any[]) => any {
 				return;
 			}
 			const edit = new vscode.WorkspaceEdit();
-			edit.replace(editor.document.uri, fullRange, JSON.stringify(JSON.parse(text), null, 2));
+			const d: number | undefined = vscode.workspace.getConfiguration('editor').get('tabSize');
+			edit.replace(editor.document.uri, fullRange, JSON.stringify(JSON.parse(text), null, d));
 			return vscode.workspace.applyEdit(edit);
 		}
 		catch (error) {

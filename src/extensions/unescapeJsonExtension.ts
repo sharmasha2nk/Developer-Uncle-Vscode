@@ -15,7 +15,7 @@ export function unescapeJsonExtension(): (...args: any[]) => any {
 			var fullRange;
 			if (text === "") {
 				text = editor.document.getText();
-				fullRange = new vscode.Range(editor.document.positionAt(0), editor.document.positionAt(text.length - 1));
+				fullRange = new vscode.Range(editor.document.positionAt(0), editor.document.positionAt(text.length));
 			}
 			else {
 				fullRange = selection;

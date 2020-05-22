@@ -2,6 +2,11 @@
 
 All notable changes to the "Developer Uncle" extension will be documented in this file.
 
+## [0.8.7]
+
+- Issue related to selection of content after un-escaping
+- JSON formatting to consider workspace tab size
+
 ## [0.8.6]
 
 - Unescape and format JSON with single command
