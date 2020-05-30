@@ -4,6 +4,10 @@
 	"description": "Developer Uncle to help you in some trivial tasks, like formatting, escaping/unescaping JSON, time, UUID generation, mermaid code snippets and trigger IFTTT events.",
 	"publisher": "developeruncle",
 	"version": "0.8.7",
+	"repository": {
+		"url": "https://github.com/sharmasha2nk/Developer-Uncle-Vscode.git",
+		"type": "git"
+	},
 	"author": {
 		"name": "Shashank Sharma"
 	},
@@ -30,8 +34,7 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.surprise",
 				"title": "You are best!",
 				"category": "Developer Uncle"
@@ -82,8 +85,7 @@
 				"category": "Developer Uncle"
 			}
 		],
-		"keybindings": [
-			{
+		"keybindings": [{
 				"command": "extension.unescapeJson",
 				"key": "shift+ctrl+8",
 				"mac": "shift+cmd+8",
@@ -172,12 +174,10 @@
 				}
 			}
 		},
-		"snippets": [
-			{
-				"language": "mermaid",
-				"path": "./snippets/mermaid.json"
-			}
-		]
+		"snippets": [{
+			"language": "mermaid",
+			"path": "./snippets/mermaid.json"
+		}]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
