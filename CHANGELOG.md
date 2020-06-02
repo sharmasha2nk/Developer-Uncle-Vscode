@@ -4,10 +4,6 @@ All notable changes to the "Developer Uncle" extension will be documented in thi
 
 ## [0.8.7]
 
-- Minor changes
-
-## [0.8.7]
-
 - Issue related to selection of content after un-escaping
 - JSON formatting to consider workspace tab size
 
