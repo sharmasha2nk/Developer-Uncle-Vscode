@@ -2,7 +2,11 @@
 
 All notable changes to the "Developer Uncle" extension will be documented in this file.
 
-## [0.8.7]
+## [0.8.9]
+
+- Minor changes
+
+## [0.8.8]
 
 - Minor changes
 
