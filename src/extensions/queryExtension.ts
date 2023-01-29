@@ -3,6 +3,9 @@ var rp = require('request');
 var Cookie = require('request-cookies').Cookie;
 import { trackEvent, trackException } from '../utility/trackEvent';
 const uuidv4 = require('uuid/v4');
+const { Configuration, OpenAIApi } = require("openai");
+
+var openai: any;
 
 export function queryExtension(context: vscode.ExtensionContext): (...args: any[]) => any {
     return () => {
@@ -31,38 +34,37 @@ async function query(context: vscode.ExtensionContext) {
         };
         rp(options, function (error: string | undefined, response: { body: any; }) {
             if (error) {
-                vscode.window.showErrorMessage("Some error connecting with Developer Uncle.");
+                callOpenAI(input);
                 trackException("query", error);
-            }
-            var text = JSON.parse(response.body).messages[0]?.message?.text;
-            if (text && isJson(text)) {
-                const faqResponse = JSON.parse(text);
-                vscode.commands.executeCommand(faqResponse.command).then(undefined, err => {
-                    if (faqResponse.message) {
-                        vscode.window.showInformationMessage(faqResponse.message);
-                    }
-                    vscode.window.showInformationMessage("I suggest using " + faqResponse.extensionName + " extension.", "Download", "Extension Details").then(selection => {
-                        console.log(selection);
-                        if (selection === "Download") {
-                            vscode.env.openExternal(vscode.Uri.parse("vscode:extension/" + faqResponse.uniqueIdentifier));
-                        } else {
-                            vscode.env.openExternal(vscode.Uri.parse("https://marketplace.visualstudio.com/items?itemName=" + faqResponse.uniqueIdentifier));
-                        }
-                    });
-                    vscode.window.showInformationMessage("I see you don't have an extension to handle it.");
-                });
-            } else if (text && text.startsWith("command://")) {
-                var command = text.substr(10);
-                vscode.commands.executeCommand(command);
-            } else if (text && text.startsWith("copy://")) {
-                var textToCopy = text.substr(7);
-                vscode.env.clipboard.writeText(textToCopy).then(() => vscode.window.showInformationMessage('Copied to your clipboard!'));
-            } else if (text && text !== "ERROR") {
-                vscode.window.showInformationMessage(text);
             } else {
-                vscode.window.showInformationMessage("I can help you Google it? [Google it](https://www.google.com/search?q=" + encodeURI(input.replace(")", "")) + ")");
-                vscode.window.showInformationMessage("Currently I am not sure how to help you with that. Could you rephrase your query?");
-                trackEvent("query_not_answered");
+                var text = JSON.parse(response.body).messages[0]?.message?.text;
+                if (text && isJson(text)) {
+                    const faqResponse = JSON.parse(text);
+                    vscode.commands.executeCommand(faqResponse.command).then(undefined, err => {
+                        if (faqResponse.message) {
+                            vscode.window.showInformationMessage(faqResponse.message);
+                        }
+                        vscode.window.showInformationMessage("I suggest using " + faqResponse.extensionName + " extension.", "Download", "Extension Details").then(selection => {
+                            console.log(selection);
+                            if (selection === "Download") {
+                                vscode.env.openExternal(vscode.Uri.parse("vscode:extension/" + faqResponse.uniqueIdentifier));
+                            } else {
+                                vscode.env.openExternal(vscode.Uri.parse("https://marketplace.visualstudio.com/items?itemName=" + faqResponse.uniqueIdentifier));
+                            }
+                        });
+                        vscode.window.showInformationMessage("I see you don't have an extension to handle it.");
+                    });
+                } else if (text && text.startsWith("command://")) {
+                    var command = text.substr(10);
+                    vscode.commands.executeCommand(command);
+                } else if (text && text.startsWith("copy://")) {
+                    var textToCopy = text.substr(7);
+                    vscode.env.clipboard.writeText(textToCopy).then(() => vscode.window.showInformationMessage('Copied to your clipboard!'));
+                } else if (text && text !== "ERROR") {
+                    vscode.window.showInformationMessage(text);
+                } else {
+                    callOpenAI(input);
+                }
             }
         });
     }
@@ -110,5 +112,32 @@ export async function init(context: vscode.ExtensionContext) {
                 }
             }
         });
+    }
+}
+
+async function callOpenAI(query: String) {
+    const apiKey: string | undefined = vscode.workspace.getConfiguration('developerUncle.openai').get("apikey");
+    if (apiKey) {
+        const configuration = new Configuration({
+            apiKey: apiKey,
+        });
+        openai = new OpenAIApi(configuration);
+        try {
+            trackEvent("openai");
+            const response = await openai.createCompletion({
+                model: "text-davinci-003",
+                prompt: query,
+                temperature: 1,
+                max_tokens: 1000,
+                top_p: 1,
+                frequency_penalty: 0,
+                presence_penalty: 0,
+            });
+            vscode.window.showInformationMessage(response.data.choices[0].text);
+        } catch (error) {
+            vscode.window.showErrorMessage("Error calling OpenAI, please check the APIKey is valid!");
+        }
+    } else {
+        vscode.window.showErrorMessage("Some error connecting with Developer Uncle.");
     }
 }

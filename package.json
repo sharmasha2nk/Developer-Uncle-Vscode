@@ -1,9 +1,9 @@
 {
 	"name": "dev-uncle",
 	"displayName": "Developer Uncle - Your VS Code Virtual Assistant",
-	"description": "Developer Uncle to help you in some trivial tasks, like formatting, escaping/unescaping JSON, time, UUID generation, mermaid code snippets and trigger IFTTT events.",
+	"description": "Ask Developer Uncle anything (Powered by ChatGPT). He can also help you in some trivial tasks, like formatting, escaping/unescaping JSON, time, UUID generation, mermaid code snippets and trigger IFTTT events.",
 	"publisher": "developeruncle",
-	"version": "0.8.9",
+	"version": "0.9.0",
 	"repository": {
 		"url": "https://github.com/sharmasha2nk/Developer-Uncle-Vscode.git",
 		"type": "git"
@@ -34,7 +34,8 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "extension.surprise",
 				"title": "You are best!",
 				"category": "Developer Uncle"
@@ -76,7 +77,7 @@
 			},
 			{
 				"command": "extension.query",
-				"title": "Please Help (beta)",
+				"title": "Please Help",
 				"category": "Developer Uncle"
 			},
 			{
@@ -85,7 +86,8 @@
 				"category": "Developer Uncle"
 			}
 		],
-		"keybindings": [{
+		"keybindings": [
+			{
 				"command": "extension.unescapeJson",
 				"key": "shift+ctrl+8",
 				"mac": "shift+cmd+8",
@@ -116,6 +118,12 @@
 		"configuration": {
 			"title": "Developer Uncle",
 			"properties": {
+				"developerUncle.openai.apikey": {
+					"type": "string",
+					"default": "",
+					"maxLength": 100,
+					"markdownDescription": "Provide your OpenAI API Key. You can get one by [signing up](https://beta.openai.com/signup) for an account."
+				},
 				"developerUncle.IFTTT.credentials.key": {
 					"type": "string",
 					"default": "",
@@ -174,10 +182,12 @@
 				}
 			}
 		},
-		"snippets": [{
-			"language": "mermaid",
-			"path": "./snippets/mermaid.json"
-		}]
+		"snippets": [
+			{
+				"language": "mermaid",
+				"path": "./snippets/mermaid.json"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -202,6 +212,7 @@
 	},
 	"dependencies": {
 		"before-after-hook": "^2.1.0",
+		"openai": "^3.1.0",
 		"request": "^2.88.2",
 		"request-cookies": "^1.1.0",
 		"uuid": "^3.4.0"

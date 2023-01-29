@@ -2,6 +2,10 @@
 
 All notable changes to the "Developer Uncle" extension will be documented in this file.
 
+## [0.9.0]
+
+- Developer Uncle to use OpenAI ChatGPT for queries
+
 ## [0.8.9]
 
 - Minor changes
