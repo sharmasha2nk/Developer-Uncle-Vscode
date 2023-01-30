@@ -1,10 +1,10 @@
 # Developer Uncle - Your VS Code Virtual Assistant
 
-Developer Uncle to help you in some trivial tasks, like formatting, escaping/un-escaping JSON, time, UUID generation and most important creating IFTTT trigger. Using IFTTT triggers, you can perform any action what IFTTT supports, like adding a TODO or posting on Slack. 
+Ask Developer Uncle anything (Powered by ChatGPT). He can also help you in some trivial tasks, like formatting, escaping/unescaping JSON, time, UUID generation, mermaid code snippets and most important creating IFTTT trigger. Using IFTTT triggers, you can perform any action what IFTTT supports, like adding a TODO or posting on Slack. 
 
 ## Features
 Commands for following actions:
- - VS Code Assistant (Beta)
+ - VS Code Assistant
  - IFTTT events
  - JSON Unescape* 
  - JSON Unescape & Format*   
