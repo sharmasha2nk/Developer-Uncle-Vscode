@@ -19,10 +19,13 @@ Commands for following actions:
  - Mermaid
 
 ## VS Code Assistant [ALT+SPACE]
-Developer Uncle is your VS Code Assistant. You can ask to execute the above commands through the text like, 'please generate UUID', 'help me format JSON' etc. Or any queries related to him, like 'who are you?', 'what can you do?' etc. He can also do small talk. Any queries not able to answer fallbacks to Google.
+Developer Uncle is your VS Code Assistant (Powered by ChatGPT). You can ask to execute the above commands through the text like, 'please generate UUID', 'help me format JSON' etc. Or any queries related to him, like 'who are you?', 'what can you do?' etc. He can also do small talk. 
+
+#### Configuration
+- Set your OpenAI API Key in the Visual Studio Code Settings (developerUncle.openai.apikey) for Developer Uncle. Get your API Key from here: [OpenAI](https://platform.openai.com/account/api-keys).
 
 ## IFTTT Commands Configuration
-- Set your IFTTT Webhook Key in the Visual Studio Code Settings for Developer Uncle. You can find it at [IFTTT Webhooks Setting Page](https://ifttt.com/maker_webhooks/settings) after login to your IFTTT account. If you find your URL is https://maker.ifttt.com/use/abcdefghijklmnop, abcdefghijklmnop is your key.
+- Set your IFTTT Webhook Key in the Visual Studio Code Settings (developerUncle.IFTTT.credentials.key) for Developer Uncle. You can find it at [IFTTT Webhooks Setting Page](https://ifttt.com/maker_webhooks/settings) after login to your IFTTT account. If you find your URL is https://maker.ifttt.com/use/abcdefghijklmnop, abcdefghijklmnop is your key.
 
 ## IFTTT Event Sample Use-cases
 - Sample IFTTT Applet to send push notification on mobile from VSCode using all three parameters. [Enable it on IFTTT](https://ifttt.com/applets/UbS7eUcZ-visual-studio-code-to-notification)

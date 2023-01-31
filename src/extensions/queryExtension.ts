@@ -138,6 +138,6 @@ async function callOpenAI(query: String) {
             vscode.window.showErrorMessage("Error calling OpenAI, please check the APIKey is valid!");
         }
     } else {
-        vscode.window.showErrorMessage("Some error connecting with Developer Uncle.");
+        vscode.window.showErrorMessage("Please configure the OpenAI API Key.");
     }
 }
